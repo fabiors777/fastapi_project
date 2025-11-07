@@ -1,0 +1,17 @@
+[project]
+name = "fastapi-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "alembic>=1.17.1",
+    "fastapi>=0.121.0",
+    "passlib[bcrypt]>=1.7.4",
+    "python-dotenv>=1.2.1",
+    "python-jose[cryptography]>=3.5.0",
+    "python-multipart>=0.0.20",
+    "sqlalchemy>=2.0.44",
+    "sqlalchemy-utils>=0.42.0",
+    "uvicorn>=0.38.0",
+]
