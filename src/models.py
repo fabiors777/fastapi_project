@@ -1,10 +1,8 @@
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey
 from sqlalchemy.orm import declarative_base
-from sqlalchemy_utils import ChoiceType  # <- pode importar assim
-# from sqlalchemy_utils.types import ChoiceType  # também funciona
 
 # Create database connection
-db = create_engine("sqlite:///database/database.db", echo=False, future=True)
+db = create_engine("sqlite:///database/database.db")
 
 # Base
 Base = declarative_base()
@@ -18,7 +16,7 @@ class User(Base):
     name = Column("name", String(255), nullable=False)
     email = Column("email", String(255))
     # corrige "passord" -> "password"
-    password = Column("password", String(10))
+    password = Column("password", String(255))
     active = Column("active", Boolean, default=True)
     admin = Column("admin", Boolean, default=False)
 
