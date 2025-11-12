@@ -41,7 +41,7 @@ class Order(Base):
     # status = Column(ChoiceType(choices=ORDER_STATUS)) >> da pau no sqlachemy
     status = Column("status", String(50))
     user_id = Column("user_id", Integer, ForeignKey("users.id"),
-                     nullable=False)  # era "username"
+                     nullable=False)
     price = Column("price", Float, default=0)
 
     def __init__(self, user_id, status="PENDING", price=0):
