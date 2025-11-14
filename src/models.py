@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base, relationship
 
 # Create database connection
 db = create_engine("sqlite:///database/database.db")
@@ -43,11 +43,16 @@ class Order(Base):
     user_id = Column("user_id", Integer, ForeignKey("users.id"),
                      nullable=False)
     price = Column("price", Float, default=0)
+    itens = relationship("OrderItem", cascade="all, delete")
 
     def __init__(self, user_id, status="PENDING", price=0):
         self.user_id = user_id
         self.status = status
         self.price = price
+
+    def price_calculate(self):
+        self.price = sum(item.unit_price *
+                         item.quantity for item in self.itens)
 
 
 class OrderItem(Base):
