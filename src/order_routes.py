@@ -12,6 +12,9 @@ order_router = APIRouter(
 
 @order_router.get("/")
 async def orders():
+    """
+    This is the standard order routing for our system. All order routes require authentication.
+    """
     return {"message": "You are on the order page."}
 
 
